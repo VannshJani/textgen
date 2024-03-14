@@ -67,7 +67,7 @@ mlp = NextChar()
 mlp.load_state_dict(torch.load(dest_path))
 
 file_id2 = "1Jg7SoBVLKtYbdAcWvRnPiq8KalxA9PYT"
-dest_path2 = "https://drive.google.com/file/d/1Jg7SoBVLKtYbdAcWvRnPiq8KalxA9PYT/view?usp=sharing"
+dest_path2 = "https://drive.google.com/file/d/1Jg7SoBVLKtYbdAcWvRnPiq8KalxA9PYT/view?usp=drive_link"
 gdd.download_file_from_google_drive(file_id=file_id2, dest_path=dest_path2)
 lstm = LSTM()
-# lstm.load_state_dict(torch.load(dest_path2))
+lstm.load_state_dict(torch.load(dest_path2))
