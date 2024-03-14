@@ -59,12 +59,12 @@ class NextChar(nn.Module):
     
 from google_drive_downloader import GoogleDriveDownloader as gdd
 
-# file_id = '1E96vJR_ZX9W66EE71LroTJHhn33pGV9b'
-# dest_path = "https://drive.google.com/file/d/1E96vJR_ZX9W66EE71LroTJHhn33pGV9b/view?usp=sharing"
+file_id = '1E96vJR_ZX9W66EE71LroTJHhn33pGV9b'
+dest_path = "https://drive.google.com/file/d/1E96vJR_ZX9W66EE71LroTJHhn33pGV9b/view?usp=sharing"
 
-# gdd.download_file_from_google_drive(file_id=file_id, dest_path=dest_path)
-# mlp = NextChar()
-# mlp.load_state_dict(torch.load(dest_path))
+gdd.download_file_from_google_drive(file_id=file_id, dest_path=dest_path)
+mlp = NextChar()
+mlp.load_state_dict(torch.load(dest_path))
 
 file_id2 = "1Jg7SoBVLKtYbdAcWvRnPiq8KalxA9PYT"
 dest_path2 = "https://drive.google.com/file/d/1Jg7SoBVLKtYbdAcWvRnPiq8KalxA9PYT/view?usp=sharing"
