@@ -47,17 +47,16 @@ def load_model(model_path,model_name):
         model.load_state_dict(state_dict)
         return model
 
-url = 'https://raw.githubusercontent.com/your_username/your_repository/master/model.pth'
-response = requests.get(url)
-with open('model.pth', 'wb') as f:
-    f.write(response.content)
 
 
 if model_name == 'MLP':
-    path = 'https://github.com/VannshJani/textgen/blob/main/model.pth'
+    url = 'https://github.com/VannshJani/textgen/blob/main/model.pth'
+    response = requests.get(url)
+    with open('model.pth', 'wb') as f:
+        f.write(response.content)
     model = NextChar()
     # Load the model
-    model = torch.load('model.pth')
+    model.load_state_dict(torch.load('model.pth'))
 elif model_name == 'LSTM':
     path = 'lstm_model.pth'
     model = LSTM()
