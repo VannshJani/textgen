@@ -29,7 +29,7 @@ if file_content is not None:
 
 # using LSTM
 class LSTM(nn.Module):
-    def __init__(self, block_size, vocab_size, emb_dim, hidden_dims = [256, 256]):
+    def __init__(self, block_size = 8, vocab_size = 65, emb_dim = 8, hidden_dims = [256, 256]):
         super().__init__()
         self.emb = nn.Embedding(vocab_size, emb_dim)
         self.lstm = nn.LSTM(emb_dim, hidden_dims[0], num_layers=2, batch_first=True,bias = True)
