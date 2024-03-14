@@ -57,3 +57,6 @@ class NextChar(nn.Module):
     x = self.lin3(x)
     return x
     
+mlp = NextChar()
+path = 'https://github.com/VannshJani/textgen/blob/main/model.pth' 
+mlp.load_state_dict(torch.load(path))
