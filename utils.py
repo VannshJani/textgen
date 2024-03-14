@@ -57,6 +57,11 @@ class NextChar(nn.Module):
     x = self.lin3(x)
     return x
     
+from google_drive_downloader import GoogleDriveDownloader as gdd
+
+file_id = '1E96vJR_ZX9W66EE71LroTJHhn33pGV9b'
+dest_path = "https://drive.google.com/file/d/1E96vJR_ZX9W66EE71LroTJHhn33pGV9b/view?usp=sharing"
+
+gdd.download_file_from_google_drive(file_id=file_id, dest_path=dest_path)
 mlp = NextChar()
-path = 'https://github.com/VannshJani/textgen/blob/main/model.pth' 
-mlp.load_state_dict(torch.load(path))
+mlp.load_state_dict(torch.load(dest_path))
