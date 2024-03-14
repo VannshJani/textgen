@@ -19,7 +19,7 @@ input_text = st.text_input('Enter a sentence to generate text from:')
 num_chars = st.slider('Number of characters to generate:', 1, 200, 20)
 
 st.sidebar.title('Model Details')
-model_name = st.sidebar.selectbox('Select model:', ['MLP', 'LSTM'])
+model_name = st.sidebar.selectbox('Select model:', ['LSTM', 'MLP'])
 
 # data = open('https://github.com/VannshJani/textgen/blob/main/input.txt', 'r').read()
 # repo_url = 'https://github.com/VannshJani/textgen'  
