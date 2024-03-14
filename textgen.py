@@ -18,7 +18,7 @@ st.sidebar.title('Model Details')
 model_name = st.sidebar.selectbox('Select model:', ['MLP', 'LSTM'])
 activation = st.sidebar.selectbox('Select activation function:', ['Sine', 'Tanh', 'Sigmoid'])
 
-data = open('input.txt', 'r').read()
+data = open('https://github.com/VannshJani/textgen/blob/main/input.txt', 'r').read()
 unique_chars = list(set(''.join(data)))
 unique_chars.sort()
 vocab_dict = {i:ch for i, ch in enumerate(unique_chars)}
