@@ -54,9 +54,9 @@ if model_name == 'MLP':
     response = requests.get(url)
     with open('model.pth', 'wb') as f:
         f.write(response.content)
-    model = NextChar()
+    # model = NextChar()
     # Load the model
-    model.load_state_dict(torch.load('model.pth'))
+    model = torch.load('model.pth')
 elif model_name == 'LSTM':
     path = 'lstm_model.pth'
     model = LSTM()
