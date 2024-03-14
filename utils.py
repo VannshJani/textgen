@@ -70,4 +70,4 @@ file_id2 = "1GrtTV11uYxSF5qDsukFChWHxW1jK8Wwm"
 dest_path2 = "https://drive.google.com/file/d/1GrtTV11uYxSF5qDsukFChWHxW1jK8Wwm/view?usp=sharing"
 gdd.download_file_from_google_drive(file_id=file_id2, dest_path=dest_path2)
 lstm = LSTM()
-lstm.load_state_dict(torch.load(dest_path2))
+lstm.load_state_dict(torch.load(dest_path2,map_location = torch.device("cpu")))
