@@ -33,19 +33,7 @@ vocab_dict = {i:ch for i, ch in enumerate(unique_chars)}
 vocab_dict_inv = {ch:i for i, ch in enumerate(unique_chars)}
 
 
-@st.cache
-def load_model(model,path):
-    weights_url = path
-    with urlopen(weights_url) as response:
-        model.load_state_dict(torch.load(BytesIO(response.read()), map_location=torch.device('cpu')))
-    return model
-
-
-
 if model_name == 'MLP':
-    # model = NextChar()
-    # url = 'https://github.com/VannshJani/textgen/blob/main/model.pth'
-    # model = load_model(model,url)
     model = mlp
 elif model_name == 'LSTM':
     path = 'lstm_model.pth'
