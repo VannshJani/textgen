@@ -8,6 +8,7 @@ from utils import data
 from utils import NextChar,LSTM
 import requests
 from urllib.request import urlopen
+from io import BytesIO
 
 st.title('Text Generation with MLPs and LSTM')
 
