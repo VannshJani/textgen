@@ -39,3 +39,19 @@ class LSTM(nn.Module):
         x = self.lin(x)
         return x
 
+class NextChar(nn.Module):
+  def __init__(self, block_size=8, vocab_size=65, emb_dim=8, hidden_dims = [64, 64]):
+    super().__init__()
+    self.emb = nn.Embedding(vocab_size, emb_dim)
+    self.lin1 = nn.Linear(block_size * emb_dim, hidden_dims[0])
+    self.lin2 = nn.Linear(hidden_dims[0], hidden_dims[1])
+    self.lin3 = nn.Linear(hidden_dims[1], vocab_size)
+
+  def forward(self, x):
+    x = self.emb(x)
+    x = x.view(x.shape[0], -1)
+    x = torch.sin(self.lin1(x))
+    x = torch.sin(self.lin2(x))
+    x = self.lin3(x)
+    return x
+    
