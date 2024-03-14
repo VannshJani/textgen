@@ -5,7 +5,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.manifold import TSNE
 from utils import data
-from utils import NextChar,LSTM,mlp
+from utils import NextChar,LSTM,mlp,lstm
 import requests
 from urllib.request import urlopen
 from io import BytesIO
@@ -37,8 +37,7 @@ if model_name == 'MLP':
     model = mlp
 elif model_name == 'LSTM':
     path = 'lstm_model.pth'
-    model = LSTM()
-    model.load_state_dict(torch.load(path))
+    model = lstm
 
 g = torch.Generator()
 g.manual_seed(4000002)
