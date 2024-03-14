@@ -19,7 +19,7 @@ def fetch_text_file_from_github(repo_url, file_path):
 
 # Example usage
 repo_url = 'https://github.com/VannshJani/textgen'  
-file_path = 'path/to/your/text_file.txt' 
+file_path = 'https://github.com/VannshJani/textgen/blob/main/input.txt' 
 
 file_content = fetch_text_file_from_github(repo_url, file_path)
 if file_content is not None:
