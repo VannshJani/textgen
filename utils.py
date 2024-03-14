@@ -9,7 +9,7 @@ def fetch_text_file_from_github(repo_url, file_path):
     try:
         # Fetch the raw content of the file
         response = requests.get(raw_file_url)
-        response.raise_for_status()  # Raise an exception for 4xx or 5xx status codes
+        response.raise_for_status() 
         
         # Return the text content of the file
         return response.text
@@ -18,8 +18,8 @@ def fetch_text_file_from_github(repo_url, file_path):
         return None
 
 # Example usage
-repo_url = 'https://github.com/username/repository'  # Replace with your GitHub repository URL
-file_path = 'path/to/your/text_file.txt'  # Replace with the path to your text file
+repo_url = 'https://github.com/VannshJani/textgen'  
+file_path = 'path/to/your/text_file.txt' 
 
 file_content = fetch_text_file_from_github(repo_url, file_path)
 if file_content is not None:
