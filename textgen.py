@@ -45,20 +45,21 @@ class NextChar(nn.Module):
     x = self.lin3(x)
     return x
     
-# using LSTM
-class LSTM(nn.Module):
-    def __init__(self, block_size=8, vocab_size=65, emb_dim=8, hidden_dims = [1024, 1024]):
-        super().__init__()
-        self.emb = nn.Embedding(vocab_size, emb_dim)
-        self.lstm = nn.LSTM(emb_dim, hidden_dims[0], num_layers=2, batch_first=True,bias = True)
-        self.lin = nn.Linear(hidden_dims[0], vocab_size)
-    def forward(self, x):
-        x = self.emb(x)
-        x, _ = self.lstm(x)
-        x = x[:,-1,:]
-        x = self.lin(x)
-        return x
 
+@st.cache
+def load_model(model_path):
+    print('load model')
+    with torch.no_grad():
+        style_model = TransformerNet()
+        state_dict = torch.load(model_path)
+        # remove saved deprecated running_* keys in InstanceNorm from the checkpoint
+        for k in list(state_dict.keys()):
+            if re.search(r'in\d+\.running_(mean|var)$', k):
+                del state_dict[k]
+        style_model.load_state_dict(state_dict)
+        style_model.to(device)
+        style_model.eval()
+        return style_model
 
 
 
