@@ -29,7 +29,7 @@ if file_content is not None:
 
 # using LSTM
 class LSTM(nn.Module):
-    def __init__(self, block_size=8, vocab_size=65, emb_dim=8, hidden_dims = [1024, 1024]):
+    def __init__(self, block_size=8, vocab_size=65, emb_dim=8, hidden_dims = [256, 256]):
         super().__init__()
         self.emb = nn.Embedding(vocab_size, emb_dim)
         self.lstm = nn.LSTM(emb_dim, hidden_dims[0], num_layers=2, batch_first=True,bias = True)
@@ -65,3 +65,9 @@ dest_path = "https://drive.google.com/file/d/1E96vJR_ZX9W66EE71LroTJHhn33pGV9b/v
 gdd.download_file_from_google_drive(file_id=file_id, dest_path=dest_path)
 mlp = NextChar()
 mlp.load_state_dict(torch.load(dest_path))
+
+file_id2 = "1Jg7SoBVLKtYbdAcWvRnPiq8KalxA9PYT"
+dest_path2 = "https://drive.google.com/file/d/1Jg7SoBVLKtYbdAcWvRnPiq8KalxA9PYT/view?usp=sharing"
+gdd.download_file_from_google_drive(file_id=file_id2, dest_path=dest_path2)
+lstm = LSTM()
+lstm.load_state_dict(torch.load(dest_path2))
