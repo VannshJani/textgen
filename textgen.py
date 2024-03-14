@@ -16,7 +16,6 @@ num_chars = st.slider('Number of characters to generate:', 1, 200, 20)
 
 st.sidebar.title('Model Details')
 model_name = st.sidebar.selectbox('Select model:', ['MLP', 'LSTM'])
-activation = st.sidebar.selectbox('Select activation function:', ['Sine', 'Tanh', 'Sigmoid'])
 
 data = open('https://github.com/VannshJani/textgen/blob/main/input.txt', 'r').read()
 unique_chars = list(set(''.join(data)))
