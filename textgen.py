@@ -16,7 +16,7 @@ st.write('This is a simple text generation app using a simple Multi-Layer Percep
 
 input_text = st.text_input('Enter a sentence to generate text from:')
 
-num_chars = st.slider('Number of characters to generate:', 1, 200, 20)
+num_chars = st.slider('Number of characters to generate:', 1, 1000, 20)
 
 st.sidebar.title('Model Details')
 model_name = st.sidebar.selectbox('Select model:', ['MLP', 'LSTM'])
