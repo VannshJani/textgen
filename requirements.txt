@@ -4,5 +4,6 @@ numpy
 streamlit
 scikit-learn
 requests
+google_drive_downloader
 
 
