@@ -63,7 +63,7 @@ class LSTM(nn.Module):
 
 
 if model_name == 'MLP':
-    path = 'model.pth'
+    path = 'https://github.com/VannshJani/textgen/blob/main/model.pth'
     model = NextChar()
     model.load_state_dict(torch.load(path))
 elif model_name == 'LSTM':
