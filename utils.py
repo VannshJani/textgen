@@ -24,3 +24,18 @@ file_path = 'https://github.com/VannshJani/textgen/blob/main/input.txt'
 file_content = fetch_text_file_from_github(repo_url, file_path)
 if file_content is not None:
     print(file_content)
+
+# using LSTM
+class LSTM(nn.Module):
+    def __init__(self, block_size=8, vocab_size=65, emb_dim=8, hidden_dims = [1024, 1024]):
+        super().__init__()
+        self.emb = nn.Embedding(vocab_size, emb_dim)
+        self.lstm = nn.LSTM(emb_dim, hidden_dims[0], num_layers=2, batch_first=True,bias = True)
+        self.lin = nn.Linear(hidden_dims[0], vocab_size)
+    def forward(self, x):
+        x = self.emb(x)
+        x, _ = self.lstm(x)
+        x = x[:,-1,:]
+        x = self.lin(x)
+        return x
+
