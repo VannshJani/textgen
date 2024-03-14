@@ -32,31 +32,18 @@ vocab_dict_inv = {ch:i for i, ch in enumerate(unique_chars)}
 
 
 @st.cache
-def load_model(model_path,model_name):
-    print('load model')
-    if model_name == "MLP":
-        model = NextChar
-    elif model_name == "LSTM":
-        model = LSTM
-    with torch.no_grad():
-        state_dict = torch.load(model_path)
-        # remove saved deprecated running_* keys in InstanceNorm from the checkpoint
-        # for k in list(state_dict.keys()):
-        #     if re.search(r'in\d+\.running_(mean|var)$', k):
-        #         del state_dict[k]
-        model.load_state_dict(state_dict)
-        return model
+def load_model(model,path):
+    weights_url = path
+    with urlopen(weights_url) as response:
+        model.load_state_dict(torch.load(BytesIO(response.read()), map_location=torch.device('cpu')))
+    return model
 
 
 
 if model_name == 'MLP':
+    model = NextChar()
     url = 'https://github.com/VannshJani/textgen/blob/main/model.pth'
-    response = requests.get(url)
-    with open('model.pth', 'wb') as f:
-        f.write(response.content)
-    # model = NextChar()
-    # Load the model
-    model = torch.load('model.pth')
+    model = load_model(model,url)
 elif model_name == 'LSTM':
     path = 'lstm_model.pth'
     model = LSTM()
