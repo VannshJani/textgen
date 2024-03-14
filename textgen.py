@@ -7,6 +7,7 @@ from sklearn.manifold import TSNE
 from utils import data
 from utils import NextChar,LSTM
 import requests
+from urllib.request import urlopen
 
 st.title('Text Generation with MLPs and LSTM')
 
