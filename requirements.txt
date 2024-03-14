@@ -3,3 +3,5 @@ matplotlib
 numpy
 streamlit
 scikit-learn
+model.pth
+input.txt
