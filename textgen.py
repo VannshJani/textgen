@@ -5,7 +5,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.manifold import TSNE
 from utils import data
-from utils import fetch_text_file_from_github
+from utils import NextChar,LSTM
 
 st.title('Text Generation with MLPs and LSTM')
 
@@ -31,19 +31,20 @@ vocab_dict_inv = {ch:i for i, ch in enumerate(unique_chars)}
 
 
 @st.cache
-def load_model(model_path):
+def load_model(model_path,model_name):
     print('load model')
+    if model_name == "MLP":
+        model = NextChar
+    elif model_name == "LSTM":
+        model = LSTM
     with torch.no_grad():
-        style_model = TransformerNet()
         state_dict = torch.load(model_path)
         # remove saved deprecated running_* keys in InstanceNorm from the checkpoint
-        for k in list(state_dict.keys()):
-            if re.search(r'in\d+\.running_(mean|var)$', k):
-                del state_dict[k]
-        style_model.load_state_dict(state_dict)
-        style_model.to(device)
-        style_model.eval()
-        return style_model
+        # for k in list(state_dict.keys()):
+        #     if re.search(r'in\d+\.running_(mean|var)$', k):
+        #         del state_dict[k]
+        model.load_state_dict(state_dict)
+        return model
 
 
 
