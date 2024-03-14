@@ -5,7 +5,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.manifold import TSNE
 from utils import data
-from utils import NextChar,LSTM
+from utils import NextChar,LSTM,mlp
 import requests
 from urllib.request import urlopen
 from io import BytesIO
@@ -43,9 +43,10 @@ def load_model(model,path):
 
 
 if model_name == 'MLP':
-    model = NextChar()
-    url = 'https://github.com/VannshJani/textgen/blob/main/model.pth'
-    model = load_model(model,url)
+    # model = NextChar()
+    # url = 'https://github.com/VannshJani/textgen/blob/main/model.pth'
+    # model = load_model(model,url)
+    model = mlp
 elif model_name == 'LSTM':
     path = 'lstm_model.pth'
     model = LSTM()
