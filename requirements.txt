@@ -4,3 +4,4 @@ numpy
 streamlit
 scikit-learn
 requests
+urllib
