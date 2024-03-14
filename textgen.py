@@ -5,7 +5,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.manifold import TSNE
 from utils import data
-
+from utils import fetch_text_file_from_github
 
 st.title('Text Generation with MLPs and LSTM')
 
@@ -19,6 +19,11 @@ st.sidebar.title('Model Details')
 model_name = st.sidebar.selectbox('Select model:', ['MLP', 'LSTM'])
 
 # data = open('https://github.com/VannshJani/textgen/blob/main/input.txt', 'r').read()
+repo_url = 'https://github.com/VannshJani/textgen'  
+file_path = 'https://github.com/VannshJani/textgen/blob/main/input.txt' 
+
+data = fetch_text_file_from_github(repo_url, file_path)
+st.write(data)
 unique_chars = list(set(''.join(data)))
 unique_chars.sort()
 vocab_dict = {i:ch for i, ch in enumerate(unique_chars)}
